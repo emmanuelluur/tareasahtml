@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tareas</title>
+</head>
+
+<body>
+    <h3>Tareas Pendientes [ <span id="contador"></span> ]</h3>
+    <div id="app">
+        <span id="list"></span>
+        
+
+    </div>
+    <script src="tareas.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            Listar();
+            TotalTareas();
+        });
+
+        let content = document.getElementById("app");
+        content.addEventListener("click", el => {
+            if (el.target.getAttribute("id") == "nueva") {
+                NuevaTarea();
+            }
+            if (el.target.getAttribute("id") == "guardar") {
+                let tarea = document.getElementById("tareaDesc").value;
+                Guarda(tarea);
+            }
+            if (el.target.getAttribute("id") == "terminar") {
+                Terminar(el.target.getAttribute("tareaId"))
+            }
+            if (el.target.getAttribute("id") == "edita") {
+                EditaTarea(el.target.getAttribute("tareaId"))
+            }
+            if (el.target.getAttribute("id") == "guardarTarea") {
+                let tarea = document.getElementById("tareaDesc").value;
+                Editar(el.target.getAttribute("tareaId"), tarea)
+            }
+            if (el.target.getAttribute("id") == "atras") {
+                Listar();
+            }
+        });
+    </script>
+</body>
+
+</html>
